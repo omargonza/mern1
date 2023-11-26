@@ -1,0 +1,96 @@
+/* styles.css */
+
+
+
+:root {
+    --color-primary: #6c63ff;
+    --color-suuuess: #00bf8e;
+    --color-warning: #f7c94b;
+    --color-danger: #f75842;
+    --color-danger-variant: rgba(247, 88, 66, 0.4);
+    --color-white: #fff;
+    --color-light: rgba(255, 255, 255, 0.7);
+    --color-black: #000;
+    --color-bg: #1f2641;
+    --color-bg1:  rgb(188, 244, 75);
+    --color-bg2: #424890;
+    --color-bg3: #abebc6;
+    --color-bg4: #d1f2eb;
+    --color-bg5: #ba0c2f;
+    --color-bg6: #f2f2f2;
+    --color-RU: linear-gradient(to right, #8fe650, #FFFF00, #8eda58);
+    --color-UR: linear-gradient(to right, #001033, #020202, #001033);
+    --container-width-lg: 80%;
+    --container-width-md: 90%;
+    --container-width-sm: 94%;
+  
+    --transition: all 400ms ease;
+  }
+
+  
+body {
+  background: var(--color-RU);
+  
+
+}
+
+
+/* Agrega este código CSS en tu archivo de estilos o en línea según tu preferencia */
+/*
+.container-fluid-nav {
+  position: relative;
+
+}
+li nav-item {
+  outline: none;
+}
+.navbar-nav {
+  position: absolute;
+  top: 0.5;
+  right: 0;
+  display: flex;
+  padding-right: 2rem;
+  outline: none;
+}
+
+.nav_container{
+  outline: none;
+}
+/* Agrega este código CSS en tu archivo de estilos o en línea según tu preferencia */
+
+.nav_container{
+  text-decoration: none !important;
+}
+ .nav-item {
+ text-decoration: none !important;
+}
+.custom-link {
+  text-decoration: none !important; /* Elimina el subrayado */
+ 
+  border: none; /* Elimina el borde */
+  font-size: large;
+}
+
+.custom-link:hover {
+  color: var(--color-bg1);
+  border-color: var(--color-RU);
+  /* Estilos adicionales cuando el usuario pasa el ratón */
+  /* Puedes personalizar esto según tus preferencias */
+}
+.btn btn-secondary{
+  outline: none;
+}
+.custom-link:active,
+.custom-link:focus {
+  outline: none; /* Elimina el resaltado al hacer clic y al enfocar */
+}
+
+.custom-card {
+    background-color:var(--color-bg5);
+   
+  }
+  
+  .button_color{
+
+    background: var(--color-bg5);
+  }
