@@ -3,7 +3,6 @@ import { useAuth } from "../context/authContext";
 import { ButtonLink } from "./ui/ButtonLink";
 import logo from "../assets/logo.png";
 
-
 export function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
   console.log(isAuthenticated, user);
@@ -33,7 +32,14 @@ export function Navbar() {
           />
         </div>
 
-        <div className="navbar-nav d-flex align-items-center ">
+        <div
+          className="navbar-nav d-flex align-items-center"
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+       
+          }}
+        >
           {isAuthenticated ? (
             <>
               <li
@@ -42,6 +48,7 @@ export function Navbar() {
               >
                 Bienvenido {user.username}
               </li>
+
               <li className="nav-item">
                 <Link
                   className="btn btn-outline-secondary"
@@ -114,6 +121,19 @@ export function Navbar() {
               </li>
             </>
           )}
+
+      
+            <ButtonLink
+              to={isAuthenticated ? "/tasks" : "/task"}
+              style={{
+                color: "#007bff",
+                borderColor: "#007bff",
+                textDecoration: "none",
+              }}
+            >
+              Tareas
+            </ButtonLink>
+      
         </div>
       </div>
     </nav>

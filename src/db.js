@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 import { MONGODB_URI } from "./config.js";
 
@@ -10,3 +11,10 @@ export const connectDB = async () => {
     process.exit(1);
   }
 };
+
+/*
+import mongoose from 'mongoose';
+import { MONGODB_URI } from  "./config.js";  // Asegúrate de ajustar la ruta
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+*/
