@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start":"src/index.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/index.js --ignore client",
     "start:prod": "cross-env NODE_ENV=production node src/index.js"
   },
