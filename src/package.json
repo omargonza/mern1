@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "DEV": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development nodemon src/index.js --ignore client",
-    "start": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node src/index.js"
+    "DEV": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development nodemon mern-electricos/src/index.js --ignore client",
+    "start": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node mern-electricos/src/index.js"
 }
 
 ,
