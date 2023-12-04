@@ -2,7 +2,7 @@
   "name": "mern-tasks",
   "version": "1.0.0",
   "description": "A MERN CRUD with Authentication",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js --ignore client",
