@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "nodemon src/index.js --ignore client",
     "start": "node src/index.js"
-},
-
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
