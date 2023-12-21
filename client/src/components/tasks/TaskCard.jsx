@@ -6,7 +6,7 @@ export function TaskCard({ task }) {
   const { deleteTask } = useTasks();
 
   return (
-    <Card className="custom-card">
+    <Card className="custom-card" style={{ backgroundColor: 'green' }}>
       <header className="flex justify-between">
         <h1 className="text-2xl font-bold">{task.title}</h1>
         <div className="flex gap-x-2 items-center">

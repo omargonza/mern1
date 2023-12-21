@@ -28,12 +28,6 @@
   }
 
   
-body {
-  background: var(--color-RU);
-  
-
-}
-
 
 /* Agrega este código CSS en tu archivo de estilos o en línea según tu preferencia */
 /*
@@ -85,10 +79,6 @@ li nav-item {
   outline: none; /* Elimina el resaltado al hacer clic y al enfocar */
 }
 
-.custom-card {
-    background-color:var(--color-bg5);
-   
-  }
   
   .button_color{
 

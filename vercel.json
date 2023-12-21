@@ -11,6 +11,6 @@
     ],
     "env": {
         "FRONTEND_URL": "http://localhost:5173",
-        "PORT": 4000 
+        "PORT": 4001 
     }
 }
