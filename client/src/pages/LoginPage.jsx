@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, Message, Button, Input, Label } from "../components/ui";
+import { Card, Message, Button, Input, Label, ButtonLink } from "../components/ui";
 import { loginSchema } from "../schemas/auth";
+import "../../public/style.css"
 
 export function LoginPage() {
   const {
@@ -35,6 +36,7 @@ export function LoginPage() {
 }}>
   <Card style={{
     backgroundColor: '#f0f0f0',
+    
     padding: '24px',
     borderRadius: '8px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
@@ -45,12 +47,17 @@ export function LoginPage() {
     <h1 style={{
       fontSize: '20px',
       fontWeight: 'bold',
-      color: '#007bff',
+      color: '#585857',
       marginBottom: '16px'
     }}>Login</h1>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Label htmlFor="email" style={{fontWeight: '600', color: '#333'}}>Email:</Label>
+    <form onSubmit={handleSubmit(onSubmit)} style={{
+        Color: 'darkgrey',
+        padding: '24px',
+        borderRadius: '8px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
+      }}>
+      <Label htmlFor="email" style={{fontWeight: '600', color: '#585857'}}>Email:</Label>
       <Input
         label="Write your email"
         type="email"
@@ -67,7 +74,7 @@ export function LoginPage() {
       />
       <p style={{color: 'red'}}>{errors.email?.message}</p>
 
-      <Label htmlFor="password" style={{fontWeight: '600', color: '#333'}}>Password:</Label>
+      <Label htmlFor="password" style={{fontWeight: '600', color: '#585857'}}>Password:</Label>
       <Input
         type="password"
         name="password"
@@ -83,24 +90,16 @@ export function LoginPage() {
       />
       <p style={{color: 'red'}}>{errors.password?.message}</p>
 
-      <Button style={{
-        width: '100%',
-        padding: '8px 16px',
-        backgroundColor: '#007bff',
-        color: '#fff',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        marginBottom: '8px'
-      }}>Login</Button>
+      <Button>Login</Button>
     </form>
 
     <p style={{
       display: 'flex',
       justifyContent: 'space-between',
       fontSize: '14px',
-      color: '#666'
+      color: '#585857'
     }}>
-      Don't have an account? <Link to="/register" style={{color: '#007bff'}}>Sign up</Link>
+     ¿No tienes una cuenta? <Link to="/register" style={{color: '#585857'}}>Sign up</Link>
     </p>
   </Card>
 </div>

@@ -10,132 +10,76 @@ export function Navbar() {
   return (
     <nav
       style={{
-        backgroundColor: "#f0f0f0",
-        padding: "16px 0",
-        borderBottom: "1px solid #ccc",
+        backgroundColor: "#85D615",
+        padding: "15px 0",
+        borderBottom: "1px solid #1a2224",
+        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.15)",
       }}
     >
       <div
-        className="container nav_container"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
+        className="container d-flex justify-content-between align-items-center"
+        style={{ padding: "0 16px" }}
       >
         <div className="d-flex align-items-center">
           <img
             src={logo}
             alt="Logo"
             className="mr-2"
-            style={{ width: "10rem", height: "10rem" }}
+            style={{ width: "80px", height: "80px", borderRadius: "50%" }}
           />
+          <h1
+            style={{
+              color: "#585857",
+              fontWeight: "800",
+              textDecoration: "none",
+              fontSize: "1.5rem",
+              margin: 0,
+            }}
+          >
+            Mantenimiento Electrico
+          </h1>
         </div>
 
-        <div
-          className="navbar-nav d-flex align-items-center"
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-       
-          }}
-        >
+        <div className="navbar-nav d-flex align-items-center">
           {isAuthenticated ? (
             <>
-              <li
-                className="nav-item mr-2"
-                style={{ color: "#007bff", fontWeight: "600" }}
+              <span
+                style={{
+                
+                  margin: "15px",
+                  display: "inline-block", // Alinea el texto en un bloque
+                  fontSize: "1.2rem", // Tamaño de la fuente
+                  fontWeight: "bold", // Peso de la fuente
+                  color: "#585857", // Color del texto
+                  textTransform: "capitalize", // Capitaliza la primera letra de cada palabra
+                  fontStyle: "italic", // Estilo de la fuente
+                }}
               >
-                Bienvenido {user.username}
-              </li>
+                ¡Bienvenido, {user.username}!
+              </span>
 
-              <li className="nav-item">
-                <Link
-                  className="btn btn-outline-secondary"
-                  to="/add-task"
-                  style={{
-                    color: "#007bff",
-                    borderColor: "#007bff",
-                    marginRight: "8px",
-                  }}
-                >
-                  Agregar Tarea
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="btn btn-outline-secondary"
-                  to="/"
-                  onClick={() => logout()}
-                  style={{
-                    color: "#007bff",
-                    borderColor: "#007bff",
-                  }}
-                >
-                  Logout
-                </Link>
-              </li>
+              <ButtonLink to="/add-task">Agregar Tarea</ButtonLink>
+              <ButtonLink
+            to={isAuthenticated ? "/tasks" : "/task"}
+            style={{ marginRight: "5px" }}
+          >
+            Tareas
+          </ButtonLink>
+             
             </>
           ) : (
             <>
-              <li className="nav-item">
-                <ButtonLink
-                  className="custom-link btn btn-outline-secondary"
-                  to="/login"
-                  style={{
-                    color: "#007bff",
-                    borderColor: "#007bff",
-                    marginRight: "8px",
-                    textDecoration: "none",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#007bff !important",
-                      textDecoration: "none !important",
-                    }}
-                  >
-                    Iniciar Sesión
-                  </span>
-                </ButtonLink>
-              </li>
-              <li className="nav-item">
-                <ButtonLink
-                  className="custom-link btn btn-outline-secondary"
-                  to="/register"
-                  style={{
-                    color: "#007bff",
-                    borderColor: "#007bff",
-                    textDecoration: "none",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#007bff !important",
-                      textDecoration: "none !important",
-                    }}
-                  >
-                    Registrar
-                  </span>
-                </ButtonLink>
-              </li>
+              <ButtonLink to="/login">Iniciar Sesión</ButtonLink>
+              <ButtonLink to="/register">Registrar</ButtonLink>
             </>
           )}
+           <Link  style={{ textDecoration:"none", color: "#585857", borderColor: "#007bff", marginRight: '10px' }}
+            onClick={() => logout()}>Logout</Link>
 
-      
-            <ButtonLink
-              to={isAuthenticated ? "/tasks" : "/task"}
-              style={{
-                color: "#007bff",
-                borderColor: "#007bff",
-                textDecoration: "none",
-              }}
-            >
-              Tareas
-            </ButtonLink>
-      
+         
         </div>
       </div>
     </nav>
   );
 }
+

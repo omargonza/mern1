@@ -52,28 +52,32 @@ li nav-item {
 }
 /* Agrega este código CSS en tu archivo de estilos o en línea según tu preferencia */
 
-.nav_container{
-  text-decoration: none !important;
-}
- .nav-item {
- text-decoration: none !important;
-}
-.custom-link {
-  text-decoration: none !important; /* Elimina el subrayado */
- 
-  border: none; /* Elimina el borde */
-  font-size: large;
-}
+body{
+   background-color: darkgrey;
 
+}
 .custom-link:hover {
-  color: var(--color-bg1);
+  color:  "#6f942c";
   border-color: var(--color-RU);
   /* Estilos adicionales cuando el usuario pasa el ratón */
   /* Puedes personalizar esto según tus preferencias */
 }
+
+.btn.btn-outline-secondary {
+  color:  "#6f942c";
+  text-decoration: none;
+ }
 .btn btn-secondary{
   outline: none;
 }
+li{
+  text-decoration: none;
+}
+
+Link{
+  text-decoration: none;
+}
+
 .custom-link:active,
 .custom-link:focus {
   outline: none; /* Elimina el resaltado al hacer clic y al enfocar */
@@ -84,3 +88,64 @@ li nav-item {
 
     background: var(--color-bg5);
   }
+
+  .my-div {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    align-items: center;
+   }
+   
+   .delete-button {
+    background-color: #e53e3e;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+   }
+   
+   .delete-button:hover {
+    background-color: #c53030;
+   }
+   
+   .edit-button {
+    background-color: #3182ce;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+   }
+   
+   .edit-button:hover {
+    background-color: #2c5282;
+   }
+
+   .comenzar{
+    background-color:darkgray;
+    color: #585857 ;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    
+   }
+   
+   .comenzar:hover {
+    background-color: #85D615;
+    color: #585857;
+
+   }
+
+   .ButtonLink:hover {
+    background-color: gray;
+  }
+  

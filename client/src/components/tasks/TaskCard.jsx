@@ -1,30 +1,71 @@
 import { useTasks } from "../../context/tasksContext";
 import { Button, ButtonLink, Card } from "../ui";
-import "../../../public/style.css";
+import "../../../public/style.css"
+
 
 export function TaskCard({ task }) {
   const { deleteTask } = useTasks();
 
   return (
-    <Card className="custom-card" style={{ backgroundColor: 'green' }}>
-      <header className="flex justify-between">
-        <h1 className="text-2xl font-bold">{task.title}</h1>
-        <div className="flex gap-x-2 items-center">
-          <Button onClick={() => deleteTask(task._id)}>Borrar</Button>
-          <ButtonLink to={`/tasks/${task._id}`}>Editar</ButtonLink>
+    <Card className="custom-card">
+      <header
+        className="grid grid-cols-2 gap-4 p-4 bg-gray-200 border-b border-gray-800 shadow-md"
+        style={{
+          backgroundColor: "darkgrey",
+   
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <div>
+          <h1 className="text-3xl font-bold text-gray-800">{task.title}</h1>
+        </div>
+        <div className="flex flex-col text-gray-600">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="col-span-2">
+              <h5 className="text-sm">Descripción:</h5>
+              <p className="text-sm">{task.description}</p>
+            </div>
+            <div>
+              <h5 className="text-sm">Materiales:</h5>
+              <p className="text-sm">{task.materiales}</p>
+            </div>
+            <div>
+              <div className="col-span-2">
+                <h5 className="text-sm">Tecnicos:</h5>
+                <p className="text-sm">{task.tecnicos}</p>
+              </div>
+              <h5 className="text-sm">Fecha:</h5>
+              <p className="text-sm">
+                {task.date &&
+                  new Date(task.date).toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+              </p>
+            </div>
+          </div>
         </div>
       </header>
-      <p className="text-slate-300">{task.description}</p>
-      {/* format date */}
-      <p>
-        {task.date &&
-          new Date(task.date).toLocaleDateString("en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-      </p>
+
+      <div className="my-div">
+      <Button
+        onClick={() => deleteTask(task._id)}
+        className="delete-button"
+      >
+        Borrar
+      </Button>
+
+      <Button
+        className="edit-button"
+        onClick={() => {
+          window.location.href = `/tasks/${task._id}`;
+        }}
+      >
+        Editar
+      </Button>
+    </div>
     </Card>
   );
 }
