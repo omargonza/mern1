@@ -1,5 +1,9 @@
 import Task from "../models/task.model.js";
 
+const filterTasks = (user, tasks) => {
+  return tasks.filter((task) => task.user.toString() === user.id.toString());
+};
+
 export const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ user : req.user.id }).populate("user");
@@ -8,6 +12,7 @@ export const getTasks = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 
 export const createTask = async (req, res) => {
   try {
