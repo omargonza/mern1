@@ -9,7 +9,7 @@ import { TaskFormPage } from "./pages/TaskFormPage";
 import { LoginPage } from "./pages/LoginPage";
 import { TasksPage } from "./pages/TasksPage";
 import { TaskProvider } from "./context/tasksContext";
-import {DiagnosticMonitor} from "./pages/DiagnosPage";
+
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
                 <Route path="/add-task" element={<TaskFormPage />} />
                 <Route path="/tasks/:id" element={<TaskFormPage />} />
                 <Route path="/profile" element={<h1>Profile</h1>} />
-                <Route path="/diagnostic" element={< DiagnosticMonitor/>} />
+               
               </Route>
             </Routes>
           </main>
