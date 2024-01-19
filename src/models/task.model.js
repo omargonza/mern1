@@ -35,7 +35,7 @@ const taskSchema = new mongoose.Schema(
 export default mongoose.model("Task", taskSchema);
 */
 import mongoose from 'mongoose';
-import { electricalMaintenanceReportSchema } from '../schemas/diagn.schema.js';
+
 
 const taskSchema = new mongoose.Schema(
   {
@@ -64,10 +64,10 @@ const taskSchema = new mongoose.Schema(
       ref: "User",
     },
     // Nuevo campo para almacenar el título de la tarea
-    originalTitle: {
-      type: String,
-      required: true,
-    },
+   // originalTitle: {
+     // type: String,
+      //required: true,
+    //},
   },
   {
     timestamps: true,

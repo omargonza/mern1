@@ -1,9 +1,5 @@
 import Task from "../models/task.model.js";
 
-const filterTasks = (user, tasks) => {
-  return tasks.filter((task) => task.user.toString() === user.id.toString());
-};
-
 export const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ user : req.user.id }).populate("user");
@@ -13,10 +9,9 @@ export const getTasks = async (req, res) => {
   }
 };
 
-
 export const createTask = async (req, res) => {
   try {
-    const { title, description, tecnicos, materiales, date } = req.body;
+    const { title, description,tecnicos, materiales, date } = req.body;
     const newTask = new Task({
       title,
       description,

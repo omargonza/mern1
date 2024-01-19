@@ -1,7 +1,6 @@
 import { useTasks } from "../../context/tasksContext";
 import { Button, ButtonLink, Card } from "../ui";
-import "../../../public/style.css"
-
+import "../../../public/style.css";
 
 export function TaskCard({ task }) {
   const { deleteTask } = useTasks();
@@ -12,7 +11,7 @@ export function TaskCard({ task }) {
         className="grid grid-cols-2 gap-4 p-4 bg-gray-200 border-b border-gray-800 shadow-md"
         style={{
           backgroundColor: "darkgrey",
-   
+
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         }}
       >
@@ -34,38 +33,46 @@ export function TaskCard({ task }) {
                 <h5 className="text-sm">Tecnicos:</h5>
                 <p className="text-sm">{task.tecnicos}</p>
               </div>
+              // ...
               <h5 className="text-sm">Fecha:</h5>
               <p className="text-sm">
-                {task.date &&
-                  new Date(task.date).toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                {task.date && (
+                  <>
+                    <span>
+                      {new Date(task.date).toLocaleDateString("en-US", {
+                        weekday: "long",
+                      })}
+                    </span>
+                    <span>
+                      {new Date(task.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </>
+                )}
               </p>
+              // ...
             </div>
           </div>
         </div>
       </header>
 
       <div className="my-div">
-      <Button
-        onClick={() => deleteTask(task._id)}
-        className="delete-button"
-      >
-        Borrar
-      </Button>
+        <buttonStyle onClick={() => deleteTask(task._id)} className="delete-button">
+          Borrar
+        </buttonStyle>
 
-      <Button
-        className="edit-button"
-        onClick={() => {
-          window.location.href = `/tasks/${task._id}`;
-        }}
-      >
-        Editar
-      </Button>
-    </div>
+        <buttonStyle
+          className="edit-button"
+          onClick={() => {
+            window.location.href = `/tasks/${task._id}`;
+          }}
+        >
+          Editar
+        </buttonStyle>
+      </div>
     </Card>
   );
 }

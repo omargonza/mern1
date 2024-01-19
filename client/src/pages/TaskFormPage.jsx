@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+
+/*
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -19,118 +21,313 @@ export function TaskFormPage() {
     formState: { errors },
   } = useForm();
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const onSubmit = async (data) => {
+    console.log('onSubmit se está ejecutando...');
+
     try {
       if (params.id) {
-        updateTask(params.id, {
+        // Si es una actualización, esperar a que se complete la operación
+        await updateTask(params.id, {
           ...data,
           date: dayjs.utc(data.date).format(),
         });
       } else {
-        createTask({
+        // Si es una creación, esperar a que se complete la operación
+        // Imprimir la fecha original
+        console.log('Fecha original:', data.date);
+      
+        // Formatear la fecha con dayjs
+        const fechaFormateada = dayjs.utc(data.date).format();
+      
+        // Imprimir la fecha después de aplicar el formato
+        console.log('Fecha después de formatear:', fechaFormateada);
+      
+        // Enviar la tarea con la fecha formateada y esperar a que se complete la operación
+        await createTask({
           ...data,
-          date: dayjs.utc(data.date).format(),
+          date: fechaFormateada,
         });
       }
 
-      // navigate("/tasks");
+      // Limpiar el mensaje de error si la operación se completa exitosamente
+      setErrorMessage(null);
+
+      // Navegar después de que la operación se haya completado exitosamente
+      navigate("/tasks");
     } catch (error) {
-      console.log(error);
-      // window.location.href = "/";
+      // Manejar errores si ocurren durante la operación
+      console.error('Error al procesar la tarea:', error.message);
+
+      // Establecer el mensaje de error para mostrar al usuario
+      setErrorMessage('Hubo un error al procesar la tarea. Verifica los datos y vuelve a intentarlo.');
+
+      // Puedes hacer más cosas aquí, como mostrar un mensaje de error al usuario
     }
   };
 
   useEffect(() => {
     const loadTask = async () => {
       if (params.id) {
-        const task = await getTask(params.id);
-        setValue("Title", task.title);
-        setValue("Description", task.description);
-        setValue("Tecnicos", task.tecnicos);
-        setValue("Materiales", task.materiales);
-        setValue(
-          "date",
-          task.date ? dayjs(task.date).utc().format("YYYY-MM-DD") : ""
-        );
-        setValue("completed", task.completed);
+        try {
+          const task = await getTask(params.id);
+          setValue("title", task.title);
+          setValue("description", task.description);
+          setValue("tecnicos", task.tecnicos);
+          setValue("materiales", task.materiales);
+          setValue(
+            "date",
+            task.date ? dayjs(task.date).utc().format("YYYY-MM-DD") : ""
+          );
+          setValue("completed", task.completed);
+
+          // Limpiar el mensaje de error si la carga de tarea se completa exitosamente
+          setErrorMessage(null);
+        } catch (error) {
+          // Manejar errores si ocurren durante la carga de la tarea
+          console.error('Error al cargar la tarea:', error.message);
+
+          // Establecer el mensaje de error para mostrar al usuario
+          setErrorMessage('Hubo un error al cargar la tarea. Vuelve a intentarlo más tarde.');
+
+          // Puedes hacer más cosas aquí, como mostrar un mensaje de error al usuario
+        }
       }
     };
     loadTask();
-  }, []);
+  }, [params.id, getTask, setValue]);
 
   return (
-<div style={{
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: 'auto', // Ajusta este valor según tus necesidades
-  maxHeight: '500px', // Ajusta este valor según tus necesidades
-  backgroundColor: '#f0f0f0',
-  maxWidth: '500px',
-  margin: '0 auto',
-  padding: '20px'
-}}>
-  <Card style={{
-    backgroundColor: '#fff',
-    padding: '24px',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-  }}>
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <Label htmlFor="title" className="font-semibold text-gray-700">Title</Label>
-      <Input
-        type="text"
-        name="title"
-        placeholder="Title"
-        {...register("title")}
-        autoFocus
-        className="w-full p-2 border border-gray-300 rounded"
-      />
-      <p className="text-red-500">{errors.title?.message}</p>
+    <Card>
+  
+      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+      
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Label htmlFor="title">Title</Label>
+        <Input
+          type="text"
+          name="title"
+          placeholder="Title"
+          {...register("title")}
+          autoFocus
+        />
+        {errors.title && (
+          <p className="text-red-500 text-xs italic">{errors.title.message}</p>
+        )}
 
-      <Label htmlFor="description" className="font-semibold text-gray-700">Description</Label>
-      <Textarea
-        name="description"
-        id="description"
-        rows="3"
-        placeholder="Description"
-        {...register("description")}
-        className="w-full p-2 border border-gray-300 rounded"
-      ></Textarea>
+        <Label htmlFor="description">Description</Label>
+        <Textarea
+          name="description"
+          id="description"
+          rows="3"
+          placeholder="Description"
+          {...register("description")}
+        />
+        {errors.description && (
+          <p className="text-red-500 text-xs italic">
+            {errors.description.message}
+          </p>
+        )}
 
-      <Label htmlFor="tecnicos" className="font-semibold text-gray-700">Tecnicos</Label>
-      <Input
-        type="text"
-        name="tecnicos"
-        placeholder="Tecnicos"
-        {...register("tecnicos")}
-        className="w-full p-2 border border-gray-300 rounded"
-      />
-      <p className="text-red-500">{errors.tecnicos?.message}</p>
+        <Label htmlFor="tecnicos">Tecnicos</Label>
+        <Input
+          type="text"
+          name="tecnicos"
+          placeholder="Tecnicos"
+          {...register("tecnicos")}
+        />
+        {errors.tecnicos && (
+          <p className="text-red-500 text-xs italic">
+            {errors.tecnicos.message}
+          </p>
+        )}
 
-      <Label htmlFor="materiales" className="font-semibold text-gray-700">Materiales</Label>
-      <Input
-        type="text"
-        name="materiales"
-        placeholder="Materiales"
-        {...register("materiales")}
-        className="w-full p-2 border border-gray-300 rounded"
-      />
-      <p className="text-red-500">{errors.materiales?.message}</p>
+        <Label htmlFor="materiales">Materiales</Label>
+        <Input
+          type="text"
+          name="materiales"
+          placeholder="Materiales"
+          {...register("materiales")}
+        />
+        {errors.materiales && (
+          <p className="text-red-500 text-xs italic">
+            {errors.materiales.message}
+          </p>
+        )}
 
-      <Label htmlFor="date" className="font-semibold text-gray-700">Date</Label>
-      <Input
-        type="date"
-        name="date"
-        {...register("date")}
-        className="w-full p-2 border border-gray-300 rounded"
-      />
+        <Label htmlFor="date">Date</Label>
+        <Input type="date" name="date" {...register("date")} />
+        {errors.date && (
+          <p className="text-red-500 text-xs italic">{errors.date.message}</p>
+        )}
 
-      <Button className="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">Save</Button>
-    </form>
-  </Card>
-</div>
+        <Button type="submit">Save</Button>
+      </form>
+    </Card>
+  );
+}
+*/
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import dayjs from "dayjs";
+import { Button, Card, Input, Label } from "../components/ui";
+import { useTasks } from "../context/tasksContext";
+import { Textarea } from "../components/ui/Textarea";
+import { useForm } from "react-hook-form";
 
-    
+import utc from "dayjs/plugin/utc";
+dayjs.extend(utc);
+
+export function TaskFormPage() {
+  const { createTask, getTask, updateTask } = useTasks();
+  const navigate = useNavigate();
+  const params = useParams();
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const onSubmit = async (data) => {
+    console.log('onSubmit se está ejecutando...');
+
+    try {
+      if (params.id) {
+        // Si es una actualización, esperar a que se complete la operación
+        await updateTask(params.id, {
+          ...data,
+          date: dayjs.utc(data.date).toDate(), // Utiliza toDate() para obtener el objeto de fecha original
+        });
+      } else {
+        // Si es una creación, esperar a que se complete la operación
+        // Imprimir la fecha original
+        console.log('Fecha original:', data.date);
+      
+        // Enviar la tarea con la fecha original y esperar a que se complete la operación
+        await createTask({
+          ...data,
+          date: dayjs.utc(data.date).format(),// date: dayjs.utc(data.date).toDate(), // Utiliza toDate() para obtener el objeto de fecha original
+        });
+      }
+
+      // Limpiar el mensaje de error si la operación se completa exitosamente
+      setErrorMessage(null);
+
+      // Navegar después de que la operación se haya completado exitosamente
+      navigate("/tasks");
+    } catch (error) {
+      // Manejar errores si ocurren durante la operación
+      console.error('Error al procesar la tarea:', error.message);
+
+      // Establecer el mensaje de error para mostrar al usuario
+      setErrorMessage('Hubo un error al procesar la tarea. Verifica los datos y vuelve a intentarlo.');
+
+      // Puedes hacer más cosas aquí, como mostrar un mensaje de error al usuario
+    }
+  };
+
+  useEffect(() => {
+    const loadTask = async () => {
+      if (params.id) {
+        try {
+          const task = await getTask(params.id);
+          setValue("title", task.title);
+          setValue("description", task.description);
+          setValue("tecnicos", task.tecnicos);
+          setValue("materiales", task.materiales);
+          setValue(
+            "date",
+            task.date ? dayjs(task.date).utc().format("YYYY-MM-DD") : ""
+          );
+          setValue("completed", task.completed);
+
+          // Limpiar el mensaje de error si la carga de tarea se completa exitosamente
+          setErrorMessage(null);
+        } catch (error) {
+          // Manejar errores si ocurren durante la carga de la tarea
+          console.error('Error al cargar la tarea:', error.message);
+
+          // Establecer el mensaje de error para mostrar al usuario
+          setErrorMessage('Hubo un error al cargar la tarea. Vuelve a intentarlo más tarde.');
+
+          // Puedes hacer más cosas aquí, como mostrar un mensaje de error al usuario
+        }
+      }
+    };
+    loadTask();
+  }, [params.id, getTask, setValue]);
+
+  return (
+    <Card>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Label htmlFor="title">Title</Label>
+        <Input
+          type="text"
+          name="title"
+          placeholder="Title"
+          {...register("title")}
+          autoFocus
+        />
+        {errors.title && (
+          <p className="text-red-500 text-xs italic">{errors.title.message}</p>
+        )}
+
+        <Label htmlFor="description">Description</Label>
+        <Textarea
+          name="description"
+          id="description"
+          rows="3"
+          placeholder="Description"
+          {...register("description")}
+        />
+        {errors.description && (
+          <p className="text-red-500 text-xs italic">
+            {errors.description.message}
+          </p>
+        )}
+
+        <Label htmlFor="tecnicos">Tecnicos</Label>
+        <Input
+          type="text"
+          name="tecnicos"
+          placeholder="Tecnicos"
+          {...register("tecnicos")}
+        />
+        {errors.tecnicos && (
+          <p className="text-red-500 text-xs italic">
+            {errors.tecnicos.message}
+          </p>
+        )}
+
+        <Label htmlFor="materiales">Materiales</Label>
+        <Input
+          type="text"
+          name="materiales"
+          placeholder="Materiales"
+          {...register("materiales")}
+        />
+        {errors.materiales && (
+          <p className="text-red-500 text-xs italic">
+            {errors.materiales.message}
+          </p>
+        )}
+
+        <Label htmlFor="date">Date</Label>
+        <Input type="date" name="date" {...register("date")} />
+        {errors.date && (
+          <p className="text-red-500 text-xs italic">{errors.date.message}</p>
+        )}
+
+        {errorMessage && (
+          <p className="text-red-500 text-xs italic">{errorMessage}</p>
+        )}
+
+        <Button type="submit">Save</Button>
+      </form>
+    </Card>
   );
 }

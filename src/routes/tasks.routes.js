@@ -5,7 +5,6 @@ import {
   getTask,
   getTasks,
   updateTask,
- 
 } from "../controllers/tasks.controllers.js";
 import { auth } from "../middlewares/auth.middleware.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
