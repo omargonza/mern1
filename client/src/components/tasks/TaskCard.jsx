@@ -16,7 +16,8 @@ export function TaskCard({ task }) {
         }}
       >
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">{task.title}</h1>
+          <h3 className="text-3xl font-bold text-gray-800">{task.title}</h3>
+          <span></span>
         </div>
         <div className="flex flex-col text-gray-600">
           <div className="grid grid-cols-2 gap-4">
@@ -33,7 +34,7 @@ export function TaskCard({ task }) {
                 <h5 className="text-sm">Tecnicos:</h5>
                 <p className="text-sm">{task.tecnicos}</p>
               </div>
-              // ...
+              
               <h5 className="text-sm">Fecha:</h5>
               <p className="text-sm">
                 {task.date && (
@@ -53,7 +54,7 @@ export function TaskCard({ task }) {
                   </>
                 )}
               </p>
-              // ...
+              
             </div>
           </div>
         </div>
