@@ -1,23 +1,5 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/src/main.jsx",
-        "dest": "/src/main.jsx"
-      },
-      {
-        "handle": "filesystem"
-      },
-      {
-        "src": "/.*",
-        "status": 404,
-        "dest": "/index.html"
-      }
+    "rewrites":  [
+      {"source": "/(.*)", "destination": "/"}
     ]
   }
-  
