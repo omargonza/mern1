@@ -1,7 +1,7 @@
 {
-  "name": "mern-tasks",
+  "name": "mern-tareas",
   "version": "1.0.0",
-  "description": "A MERN CRUD with Authentication",
+  "description": "A MERN CRUD con autenticación de usuarios.",
   "main": "index.js",
   "type": "module",
   "scripts": {
