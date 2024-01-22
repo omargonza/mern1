@@ -35,12 +35,16 @@ export function LoginPage() {
   backgroundColor: '#00000'
 }}>
   <Card style={{
-    backgroundColor: '#f0f0f0',
-    
-    padding: '24px',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-  }}>
+    backgroundColor: '#2b2c2e', // Color de fondo más sobrio
+    maxWidth: '400px', // Ancho máximo del contenedor
+    width: '100%', // Ancho completo del contenedor
+    padding: '20px', // Espaciado interno
+    borderRadius: '8px', // Bordes redondeados
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Sombra 3D
+    boxSizing: 'border-box', // Incluye el padding en el ancho y alto
+    margin: '0 auto', // Centra el contenedor horizontalmente
+    overflow: 'hidden', // Evita que el contenido desborde
+}}>
     {loginErrors.map((error, i) => (
       <Message style={{color: 'red'}} message={error} key={i} />
     ))}
