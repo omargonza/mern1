@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Message, Button, Input, Label } from "../components/ui";
+import { Card, Message, Button } from "../components/ui";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,15 +38,15 @@ function Register() {
     >
       <Card
         style={{
-          backgroundColor: "#2b2c2e", // Color de fondo más sobrio
-          maxWidth: "400px", // Ancho máximo del contenedor
-          width: "100%", // Ancho completo del contenedor
-          padding: "20px", // Espaciado interno
-          borderRadius: "8px", // Bordes redondeados
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Sombra 3D
-          boxSizing: "border-box", // Incluye el padding en el ancho y alto
-          margin: "0 auto", // Centra el contenedor horizontalmente
-          overflow: "hidden", // Evita que el contenido desborde
+          backgroundColor: "#2b2c2e",
+          maxWidth: "400px",
+          width: "100%",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          boxSizing: "border-box",
+          margin: "0 auto",
+          overflow: "hidden",
         }}
       >
         {registerErrors.map((error, i) => (
@@ -69,7 +69,7 @@ function Register() {
             padding: "24px",
             borderRadius: "8px",
             boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-            width: "100%", // Ajusta el ancho según sea necesario
+            width: "100%",
           }}
         >
           <label
@@ -90,7 +90,7 @@ function Register() {
             {...register("username")}
             autoFocus
             style={{
-              width: "90%",
+              width: "100%",
               padding: "8px",
               border: "1px solid #ccc",
               borderRadius: "4px",
@@ -117,7 +117,7 @@ function Register() {
             placeholder="youremail@domain.tld"
             {...register("email")}
             style={{
-              width: "90%",
+              width: "100%",
               padding: "8px",
               border: "1px solid #ccc",
               borderRadius: "4px",
@@ -145,7 +145,7 @@ function Register() {
             placeholder="********"
             {...register("password")}
             style={{
-              width: "90%",
+              width: "100%",
               padding: "8px",
               border: "1px solid #ccc",
               borderRadius: "4px",
@@ -187,20 +187,20 @@ function Register() {
             style={{
               width: "100%",
               padding: "10px",
-              backgroundColor: "#007BFF", // Color de fondo
-              color: "#fff", // Color del texto
-              borderRadius: "4px", // Bordes redondeados
-              border: "none", // Sin borde
-              cursor: "pointer", // Cursor de puntero al pasar el mouse
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderRadius: "4px",
+              border: "none",
+              cursor: "pointer",
             }}
           >
             Submit
           </Button>
         </form>
         <p className="mt-4 text-gray-600">
-          ¿Ya tenés una cuenta, che?
+          ¿Ya tienes una cuenta, che?
           <Link className="text-blue-500 ml-1" to="/login">
-            Login
+            Iniciar sesión
           </Link>
         </p>
       </Card>
