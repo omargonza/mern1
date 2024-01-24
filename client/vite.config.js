@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'client',
+    outDir: 'client/dist/',
   },
   optimizeDeps: {
     include: ['react-toastify'],
