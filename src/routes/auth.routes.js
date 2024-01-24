@@ -11,9 +11,9 @@ import { loginSchema, registerSchema } from "../schemas/auth.schema.js";
 
 const router = Router();
 
-router.post("/register", validateSchema(registerSchema), register);
-router.post("/login", validateSchema(loginSchema), login);
-router.get("/verify", verifyToken);
-router.post("/logout", verifyToken, logout);
+router.post("https://electric-2r3p.onrender.com/register", validateSchema(registerSchema), register);
+router.post("https://electric-2r3p.onrender.com/login", validateSchema(loginSchema), login);
+router.get("https://electric-2r3p.onrender.com/verify", verifyToken);
+router.post("https://electric-2r3p.onrender.com/logout", verifyToken, logout);
 
 export default router;

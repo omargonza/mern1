@@ -58,9 +58,9 @@ export function Navbar() {
                 ¡Bienvenido, {user.username}!
               </span>
 
-              <ButtonLink to="/add-task">Agregar Tarea</ButtonLink>
+              <ButtonLink to="https://electric-2r3p.onrender.com/add-task">Agregar Tarea</ButtonLink>
               <ButtonLink
-            to={isAuthenticated ? "/tasks" : "/task"}
+            to={isAuthenticated ? "https://electric-2r3p.onrender.com/tasks" : "https://electric-2r3p.onrender.com/task"}
             style={{ marginRight: "5px" }}
           >
             Tareas
@@ -69,8 +69,8 @@ export function Navbar() {
             </>
           ) : (
             <>
-              <ButtonLink to="/login">Iniciar Sesión</ButtonLink>
-              <ButtonLink to="/register">Registrar</ButtonLink>
+              <ButtonLink to="https://electric-2r3p.onrender.com/login">Iniciar Sesión</ButtonLink>
+              <ButtonLink to="https://electric-2r3p.onrender.com/register">Registrar</ButtonLink>
             </>
           )}
            <Link  style={{ textDecoration:"none", color: "#585857", borderColor: "#007bff", marginRight: '10px' }}

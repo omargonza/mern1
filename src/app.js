@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
-app.use("/api/auth", authRoutes);
-app.use("/api", taksRoutes);
+app.use("https://electric-2r3p.onrender.com/api/auth", authRoutes);
+app.use("https://electric-2r3p.onrender.com/api", taksRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const path = await import("path");
