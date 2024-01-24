@@ -135,25 +135,7 @@ Link{
     background-color: lightgray;
    }
 
-   .comenzar{
-    background-color:darkgray;
-    color: #585857 ;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    
-   }
    
-   .comenzar:hover {
-    background-color: #85D615;
-    color: #585857;
-
-   }
-
    .ButtonLink:hover {
     background-color: gray;
   }

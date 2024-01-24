@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../../public/style.css"
 /*
 function HomePage() {
   return (
@@ -43,7 +44,7 @@ function HomePage() {
               Gestión de Tareas
             </h1>
           </Navbar.Brand>
-          <p className="text-md text-gray-500">
+          <p style={{ fontSize: "1rem", color: "#555", marginBottom: "1rem" }}>
             Esta aplicación ha sido diseñada para registrar eficientemente las
             tareas del sector eléctrico de los trabajadores del Sutpa. Permite a
             los trabajadores documentar y supervisar sus actividades diarias,
@@ -54,6 +55,7 @@ function HomePage() {
             las tareas, mejorando así la eficiencia y la coordinación en el
             equipo.
           </p>
+   
           <Button
             style={{
               backgroundColor: "#85D615",
@@ -72,9 +74,11 @@ function HomePage() {
           >
             Comenzar
           </Button>
+          
         </Container>
       </Navbar>
     </section>
+    
   );
 }
 
