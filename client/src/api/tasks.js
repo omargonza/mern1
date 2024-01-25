@@ -40,9 +40,9 @@ export const getTaskRequest = async (id) => axios.get(`/tasks/${id}`);
 
 import axios from "./axios";
 
-export const getTasksRequest = async () => axios.get("https://electric-2r3p.onrender.com/tasks");
+export const getTasksRequest = async () => axios.get("/tasks");
 
-export const createTaskRequest = async (task) => axios.post("https://electric-2r3p.onrender.com/tasks", task);
+export const createTaskRequest = async (task) => axios.post("/tasks", task);
 
 export const updateTaskRequest = async (id, task) => {
   try {
