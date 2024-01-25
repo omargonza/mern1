@@ -46,7 +46,7 @@ export const createTaskRequest = async (task) => axios.post("https://electric-2r
 
 export const updateTaskRequest = async (id, task) => {
   try {
-    const res = await axios.put(`https://electric-2r3p.onrender.com/tasks/${id}`, task);
+    const res = await axios.put(`/tasks/${id}`, task);
     console.log('Respuesta de la solicitud de actualización:', res.data);
     return res;
   } catch (error) {
@@ -55,8 +55,8 @@ export const updateTaskRequest = async (id, task) => {
   }
 };
 
-export const deleteTaskRequest = async (id) => axios.delete(`https://electric-2r3p.onrender.com/tasks/${id}`);
+export const deleteTaskRequest = async (id) => axios.delete(`/tasks/${id}`);
 
-export const getTaskRequest = async (id) => axios.get(`https://electric-2r3p.onrender.com/tasks/${id}`);
+export const getTaskRequest = async (id) => axios.get(`/tasks/${id}`);
 
-export const filterTasksRequest = async (search) => axios.get(`https://electric-2r3p.onrender.com/tasks/filter/${search}`);
+export const filterTasksRequest = async (search) => axios.get(`/tasks/filter/${search}`);
