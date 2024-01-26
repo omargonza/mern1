@@ -15,7 +15,7 @@ app.use(
     origin: FRONTEND_URL,
   })
 );
-/*
+
 // Configuración de CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://mern001.vercel.app');
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
   next();
 });
-*/
+/*
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
   next();
 });
-
+*/
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
