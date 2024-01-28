@@ -14,7 +14,13 @@ app.use(
     credentials: true,
     origin: FRONTEND_URL,
   })
+  
 );
+
+//nal para responder a solicitudes OPTIONS
+app.options('*', cors());
+
+
 /*
 // Configuración de CORS
 app.use((req, res, next) => {
@@ -31,15 +37,6 @@ app.use((req, res, next) => {
 });
 */
 // Configuración de CORS
-
-
-// Configuración de CORS con el paquete cors
-app.use(cors({
-  origin: 'https://mern001.vercel.app/',
-}));
-
-// Opción adicional para responder a solicitudes OPTIONS
-app.options('*', cors());
 
 
 // Resto de tu configuración del servidor
