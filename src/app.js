@@ -32,18 +32,6 @@ app.use((req, res, next) => {
 */
 // Configuración de CORS
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, POST, GET, PUT, DELETE');
-
-  // Responder a las solicitudes OPTIONS
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-
-  next();
-});
 
 // Configuración de CORS con el paquete cors
 app.use(cors({
