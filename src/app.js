@@ -6,6 +6,12 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import taksRoutes from "./routes/tasks.routes.js";
 import { FRONTEND_URL } from "./config.js";
+import dotenv from 'dotenv';
+
+
+dotenv.config();
+
+
 
 const app = express();
 
