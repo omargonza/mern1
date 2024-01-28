@@ -15,16 +15,6 @@ dotenv.config();
 
 const app = express();
 
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://mern001.vercel.app",
-  })
-  
-);
-
-//nal para responder a solicitudes OPTIONS
-app.options('*', cors());
 
 
 /*
@@ -43,6 +33,20 @@ app.use((req, res, next) => {
 });
 */
 // Configuración de CORS
+try {
+  app.use(
+    cors({
+      credentials: true,
+      origin: FRONTEND_URL,
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: 'Content-Type, Authorization',
+      exposedHeaders: 'Content-Disposition',
+      optionsSuccessStatus: 204,
+    })
+  );
+} catch (error) {
+  console.error('Error durante la configuración de CORS:', error);
+}
 
 
 // Resto de tu configuración del servidor
